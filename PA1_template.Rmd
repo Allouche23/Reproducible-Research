@@ -4,14 +4,26 @@ output:
   html_document:
     keep_md: true
 ---
-
+#Reproducible Researche: Project 1
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ## Loading and preprocessing the data
+```{r }
 
+data1 <- read.csv("activity.csv", header = TRUE)
+```
 
 
 ## What is mean total number of steps taken per day?
+In this part off the assignement I have ignored missing values 
 
+###Calculate the total number of steps taken per day
+I am using the function the function tapply
+```{r }
+totalstepsperday <- tapply(data1$steps,data1$date, sum)
+```
 
 
 ## What is the average daily activity pattern?
