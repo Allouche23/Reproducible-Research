@@ -4,7 +4,7 @@ output:
   html_document:
     keep_md: true
 ---
-#Reproducible Researche: Project 1
+# Reproducible Researche: Project 1
 
 
 
@@ -18,14 +18,14 @@ data1 <- read.csv("activity.csv", header = TRUE)
 ## What is mean total number of steps taken per day?
 In this part off the assignement I have ignored missing values 
 
-###Calculate the total number of steps taken per day
+### Calculate the total number of steps taken per day
 I am using the function  tapply
 
 ```r
 totalstepsperday <- tapply(data1$steps,data1$date, sum, na.rm = TRUE)
 ```
 
-###Histogram off the total number off steps taken every day
+### Histogram off the total number off steps taken every day
 
 ```r
 hist(totalstepsperday, main = "Total Steps Per Day", xlab = "steps per day")
@@ -56,13 +56,13 @@ median(totalstepsperday)
 
 ## What is the average daily activity pattern?
 
-###calculating the average daily activity pattern
+### calculating the average daily activity pattern
 
 ```r
 averagestepsperday <- aggregate(steps ~ interval, data = data1, mean, na.rm = TRUE)
 ```
 
-###create the plot
+### create the plot
 
 ```r
 library(ggplot2)
@@ -85,7 +85,7 @@ averagestepsperday[which.max(averagestepsperday$steps),]
 
 
 ## Imputing missing values
-###Calculate and report the total number of missing values in the dataset
+### Calculate and report the total number of missing values in the dataset
 
 ```r
 sum(is.na(data1$steps))
@@ -95,7 +95,7 @@ sum(is.na(data1$steps))
 ## [1] 2304
 ```
 
-###Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated.
+### Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated.
 I using interval data  
 first I copy the dataset, to keep the future dataset with no NA apart from the dataset with NA
 
@@ -114,7 +114,7 @@ functiaply <- function(steps,interval){
 data2$steps <- mapply(functiaply,data2$steps,data2$interval)  
 ```
 
-###calculating the average daily activity pattern 
+### calculating the average daily activity pattern 
 
 ```r
 totalstepsperday2 <- tapply(data2$steps,data2$date, sum)
@@ -161,7 +161,7 @@ Be aware that you should write the function days sunday and saturday according t
 ```r
 data2$date <- as.Date(data2$date)
 data2$weekday <- weekdays(data2$date)
-data2$daytype <- ifelse(data2$weekday == "søndag" | data2$weekday == "lørdag", "weekend", "weekday")
+data2$daytype <- ifelse(data2$weekday == "sÃ¸ndag" | data2$weekday == "lÃ¸rdag", "weekend", "weekday")
 ```
 
 ###calculate with different weekedays
