@@ -129,4 +129,4 @@ averagestepsperday <- aggregate( steps ~ interval + daytype, data = data2, mean)
 g <- ggplot(averagestepsperday, aes( interval, steps))
  g + facet_grid(. ~ daytype) +geom_line()
 ```
-
+The graph indicate that the test subject walking is more concentrated on weekdays then doing the weekend.
